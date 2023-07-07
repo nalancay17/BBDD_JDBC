@@ -33,6 +33,7 @@ public class Conecta_Pruebas {
 				precio = miResultSet.getString("PRECIO");
 				System.out.println(codigoArticulo + " - " + nombreArticulo + " - " + precio);
 			}
+			miResultSet.close();
 		} catch (Exception e) {
 			System.out.println("NO CONECTA!");
 			System.out.println(e);
