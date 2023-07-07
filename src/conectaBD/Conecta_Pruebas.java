@@ -28,8 +28,8 @@ public class Conecta_Pruebas {
 			String precio;
 
 			while (miResultSet.next()) {
-				codigoArticulo = miResultSet.getString("CÓDIGO ARTÍCULO");
-				nombreArticulo = miResultSet.getString("NOMBRE ARTÍCULO");
+				codigoArticulo = miResultSet.getString("CÓDIGO_ARTÍCULO");
+				nombreArticulo = miResultSet.getString("NOMBRE_ARTÍCULO");
 				precio = miResultSet.getString("PRECIO");
 				System.out.println(codigoArticulo + " - " + nombreArticulo + " - " + precio);
 			}
