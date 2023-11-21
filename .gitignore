@@ -88,3 +88,8 @@ local.properties
 .project
 /libs/
 /lib/
+
+
+# PROYECTO INTELLIJ IDEA #
+
+.idea/
