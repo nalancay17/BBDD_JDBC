@@ -1,4 +1,4 @@
-package dao;
+package com.nico.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,14 +6,14 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 
-import modelo.Producto;
+import com.nico.modelo.Producto;
 
 public class ProductoDAOImpl implements ProductoDAO {
 
-	private static final String INSERT = "INSERT INTO productos (codigo, nombre, precio, fecha, pais_origen) VALUES(?,?,?,?,?)";
-	private static final String UPDATE = "UPDATE productos SET nombre = ?, precio = ?, fecha = ?, pais_origen = ? WHERE codigo = ?";
-	private static final String DELETE = "DELETE FROM productos WHERE codigo = ?";
-	private static final String SELECT = "SELECT * from productos";
+	private static final String INSERT = "INSERT INTO producto (codigo, nombre, precio, fecha, pais_origen) VALUES(?,?,?,?,?)";
+	private static final String UPDATE = "UPDATE producto SET nombre = ?, precio = ?, fecha = ?, pais_origen = ? WHERE codigo = ?";
+	private static final String DELETE = "DELETE FROM producto WHERE codigo = ?";
+	private static final String SELECT = "SELECT * from producto";
 
 	@Override
 	public void registrar(Producto p) throws Exception {

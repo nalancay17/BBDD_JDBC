@@ -93,3 +93,4 @@ local.properties
 # PROYECTO INTELLIJ IDEA #
 
 .idea/
+/target/

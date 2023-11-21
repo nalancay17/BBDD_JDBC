@@ -1,8 +1,8 @@
-package dao;
+package com.nico.dao;
 
 import java.util.List;
 
-import modelo.Producto;
+import com.nico.modelo.Producto;
 
 public interface ProductoDAO {
 

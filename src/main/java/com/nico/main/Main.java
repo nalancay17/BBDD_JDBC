@@ -1,10 +1,10 @@
-package main;
+package com.nico.main;
 
 import java.sql.Date;
 
-import dao.ProductoDAO;
-import dao.ProductoDAOImpl;
-import modelo.Producto;
+import com.nico.dao.ProductoDAO;
+import com.nico.dao.ProductoDAOImpl;
+import com.nico.modelo.Producto;
 
 public class Main {
 
