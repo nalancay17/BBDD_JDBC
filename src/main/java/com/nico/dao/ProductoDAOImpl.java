@@ -17,7 +17,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 
 	@Override
 	public void registrar(Producto p) throws Exception {
-		Conexion conexion = new Conexion();
+		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(INSERT);
@@ -36,7 +36,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 
 	@Override
 	public void modificar(Producto p) throws Exception {
-		Conexion conexion = new Conexion();
+		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(UPDATE);
@@ -55,7 +55,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 
 	@Override
 	public void eliminar(Producto p) throws Exception {
-		Conexion conexion = new Conexion();
+		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(DELETE);
@@ -71,7 +71,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 	@Override
 	public List<Producto> listar() throws Exception {
 		ArrayList<Producto> lista = new ArrayList<Producto>();
-		Conexion conexion = new Conexion();
+		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			Statement st = conexion.getConexion().createStatement();
