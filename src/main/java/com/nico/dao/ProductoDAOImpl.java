@@ -10,14 +10,18 @@ import com.nico.modelo.Producto;
 
 public class ProductoDAOImpl implements ProductoDAO {
 
+	private Conexion conexion;
 	private static final String INSERT = "INSERT INTO producto (codigo, nombre, precio, fecha, pais_origen) VALUES(?,?,?,?,?)";
 	private static final String UPDATE = "UPDATE producto SET nombre = ?, precio = ?, fecha = ?, pais_origen = ? WHERE codigo = ?";
 	private static final String DELETE = "DELETE FROM producto WHERE codigo = ?";
 	private static final String SELECT = "SELECT * from producto";
 
+	public ProductoDAOImpl(Conexion conexion) {
+		this.conexion = conexion;
+	}
+
 	@Override
 	public void registrar(Producto p) throws Exception {
-		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(INSERT);
@@ -36,7 +40,6 @@ public class ProductoDAOImpl implements ProductoDAO {
 
 	@Override
 	public void modificar(Producto p) throws Exception {
-		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(UPDATE);
@@ -55,7 +58,6 @@ public class ProductoDAOImpl implements ProductoDAO {
 
 	@Override
 	public void eliminar(Producto p) throws Exception {
-		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			PreparedStatement st = conexion.getConexion().prepareStatement(DELETE);
@@ -71,7 +73,6 @@ public class ProductoDAOImpl implements ProductoDAO {
 	@Override
 	public List<Producto> listar() throws Exception {
 		ArrayList<Producto> lista = new ArrayList<Producto>();
-		Conexion conexion = new ConexionMySql();
 		try {
 			conexion.conectar();
 			Statement st = conexion.getConexion().createStatement();
