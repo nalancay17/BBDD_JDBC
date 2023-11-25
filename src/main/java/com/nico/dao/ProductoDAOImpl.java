@@ -2,9 +2,10 @@ package com.nico.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.nico.modelo.Producto;
 
@@ -15,6 +16,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 	private static final String UPDATE = "UPDATE producto SET nombre = ?, precio = ?, fecha = ?, pais_origen = ? WHERE codigo = ?";
 	private static final String DELETE = "DELETE FROM producto WHERE codigo = ?";
 	private static final String SELECT = "SELECT * from producto";
+	private static final String SELECT_ONE = "SELECT * FROM producto WHERE codigo = ?";
 
 	public ProductoDAOImpl(Conexion conexion) {
 		this.conexion = conexion;
@@ -95,6 +97,35 @@ public class ProductoDAOImpl implements ProductoDAO {
 			conexion.cerrar();
 		}
 		return lista;
+	}
+
+	@Override
+	public Producto getProducto(String codigo) throws Exception {
+		try {
+			conexion.conectar();
+			PreparedStatement st = conexion.getConexion().prepareStatement(SELECT_ONE);
+			st.setString(1, codigo);
+			ResultSet rs = st.executeQuery();
+
+			Producto p = null;
+			if (rs.next())
+				p = obtenerProductoDelResultSet(rs);
+			return p;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			conexion.cerrar();
+		}
+	}
+
+	private Producto obtenerProductoDelResultSet(ResultSet rs) throws SQLException {
+		Producto p = new Producto();
+		p.setCodigo(rs.getString("codigo"));
+		p.setNombre(rs.getString("nombre"));
+		p.setPrecio(rs.getDouble("precio"));
+		p.setFecha(rs.getDate("fecha"));
+		p.setPaisOrigen(rs.getString("pais_origen"));
+		return p;
 	}
 
 }
