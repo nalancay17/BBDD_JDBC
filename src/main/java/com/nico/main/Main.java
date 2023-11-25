@@ -10,6 +10,10 @@ import com.nico.modelo.Producto;
 
 public class Main {
 
+	private static final String URL = "jdbc:mysql://localhost:3306/bbdd_jdbc";
+	private static final String USER = "root";
+	private static final String PASSWORD = "manager1";
+
 	public static void main(String[] args) {
 		Producto p = new Producto();
 		p.setCodigo("AR101");
@@ -19,7 +23,7 @@ public class Main {
 		p.setPaisOrigen("Argentina");
 
 		try {
-			Conexion conexion = new ConexionMySql();
+			Conexion conexion = new ConexionMySql(URL, USER, PASSWORD);
 			ProductoDAO dao = new ProductoDAOImpl(conexion);
 			for (Producto pr: dao.listar())
 				System.out.println(pr);

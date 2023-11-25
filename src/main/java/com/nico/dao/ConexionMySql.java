@@ -7,13 +7,19 @@ import java.sql.SQLException;
 public class ConexionMySql implements Conexion {
 
 	private Connection conexion;
-	private final String URL = "jdbc:mysql://localhost:3306/bbdd_jdbc";
-	private final String USER = "root";
-	private final String PASSWORD = "manager1";
+	private String url;
+	private String user;
+	private String password;
 
-	public void conectar() throws Exception {
+	public ConexionMySql(String url, String user, String password) {
+		this.url = url;
+		this.user = user;
+		this.password = password;
+	}
+
+	public void conectar() throws SQLException {
 		try {
-			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+			conexion = DriverManager.getConnection(url, user, password);
 		} catch(Exception e) {
 			throw e;
 		}
