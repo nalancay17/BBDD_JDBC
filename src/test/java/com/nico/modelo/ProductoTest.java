@@ -20,7 +20,7 @@ public class ProductoTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void codigoTamanioMenor5Test() {
+	public void codigoTamanioMenor4Test() {
 		String codigo = "abc";
 		p.setCodigo(codigo);
 	}
@@ -32,11 +32,11 @@ public class ProductoTest {
 	}
 
 	@Test
-	public void codigo5CharOkTest() {
-		String codigo5Char = "AR510";
+	public void codigo4CharOkTest() {
+		String codigo5Char = "AR51";
 		p.setCodigo(codigo5Char);
 		assertEquals(codigo5Char, p.getCodigo());
-		assertEquals(5, p.getCodigo().length());
+		assertEquals(4, p.getCodigo().length());
 	}
 
 	@Test

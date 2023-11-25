@@ -18,8 +18,8 @@ public class Producto {
 	public void setCodigo(String codigo) {
 		if (codigo == null)
 			throw new IllegalArgumentException("El código no puede ser nulo");
-		if (codigo.length() < 5 || codigo.length() > 10)
-			throw new IllegalArgumentException("El código debe tener entre 5 y 10 caracteres");
+		if (codigo.length() < 4 || codigo.length() > 10)
+			throw new IllegalArgumentException("El código debe tener entre 4 y 10 caracteres");
 		this.codigo = codigo;
 	}
 
